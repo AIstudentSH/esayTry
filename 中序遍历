@@ -1,0 +1,19 @@
+
+
+class Solution {
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> ans = new ArrayList<>();
+        TreeNode head = root;
+        midSearch(head,ans);
+        return ans;
+    }
+    public List<Integer> midSearch(TreeNode root, List<Integer> ans){
+        if(root == null){
+            return ans;
+        }
+        midSearch(root.left,ans);
+        ans.add(root.val);
+        midSearch(root.right,ans);
+        return ans;
+    }
+}
