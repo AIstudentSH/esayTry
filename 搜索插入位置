@@ -1,0 +1,20 @@
+二分查找边界
+1.循环结束条件 <=
+2.判断目标，target <= nums[mid]
+
+classSolution {
+publicintsearchInsert(int[] nums, inttarget) {
+inthead = 0;
+inttail = nums.length -1;
+while(head <= tail){
+intmid = (tail - head)/2 + head;
+if(target <= nums[mid]){
+ tail = mid -1;
+ }
+else{
+ head = mid +1;
+ }
+ }
+return head;
+ }
+}
