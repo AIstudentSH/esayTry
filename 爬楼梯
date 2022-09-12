@@ -1,0 +1,17 @@
+最简单的动态规划类型，
+
+
+
+class Solution {
+    public int climbStairs(int n) {
+        int ori = 0;
+        int f0 = 0;
+        int ans = 1;
+        for(int i = 1 ; i<= n ; i++){
+            ori = f0;
+            f0 = ans;
+            ans = ori + f0;
+        }
+        return ans;
+    }
+}
