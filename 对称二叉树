@@ -1,0 +1,25 @@
+根据相同的树改造
+
+class Solution {
+    public boolean isSymmetric(TreeNode root) {
+        if(root.left == null && root.right == null){
+            return true;
+        }
+        return isSymmetricTree(root.right,root.left);
+    }
+    public boolean isSymmetricTree(TreeNode p, TreeNode q) {
+        if(p == null && q == null){
+            return true;
+        }
+        if(p == null && q != null){
+            return false;
+        }
+        if(p != null && q == null){
+            return false;
+        }
+        if(p.val != q.val){
+            return false;
+        }
+        return isSymmetricTree(p.left,q.right)&&isSymmetricTree(p.right,q.left);
+    }
+}
