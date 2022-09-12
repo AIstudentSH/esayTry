@@ -1,0 +1,19 @@
+根据中序遍历（排序结果）重新还原二叉树
+
+class Solution {
+    public TreeNode sortedArrayToBST(int[] nums) {
+        int head = 0;
+        int tail = nums.length -1;
+        return createTree(nums, head, tail);
+    }
+    public TreeNode createTree(int[] nums, int head, int tail) {
+        if(head > tail){
+            return null;
+        } 
+        int mid = (head + tail)/2;
+        TreeNode now = new TreeNode(nums[mid]);
+        now.left =  createTree(nums, head, mid-1);
+        now.right =  createTree(nums, mid+1, tail);
+        return now;
+    }
+}
