@@ -1,16 +1,26 @@
 最简单的动态规划类型，
-
+f(x) = f(n-1) + f(n-2)
+简而言之，最终结果只能是最后两步的和
+那么把最终答案的推算看成是两步合成第三步的方法。
+从起始点开始的从左往右计算
+f0 =1 
+f1 =1
+ans = 2
+让ans从2走到n，即可得出答案
 
 
 class Solution {
     public int climbStairs(int n) {
-        int ori = 0;
-        int f0 = 0;
-        int ans = 1;
-        for(int i = 1 ; i<= n ; i++){
-            ori = f0;
-            f0 = ans;
-            ans = ori + f0;
+        if(n<=2){
+            return n;
+        }
+        int f0 = 1;
+        int f1 = 1;
+        int ans = 2;
+        for(int i = 2 ; i<= n ; i++){
+            ans = f1 + f0;
+            f0 = f1;
+            f1 = ans;
         }
         return ans;
     }
