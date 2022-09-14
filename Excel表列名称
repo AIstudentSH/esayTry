@@ -1,0 +1,17 @@
+有玄机，不是简单的26进制
+由于需要使用到‘A’来推算字母，推算位数结果必须-1，A +（1）-1 = A
+还有隐含的坑，26%26=0，这会导致‘Z’出不来，所以位数计算过程中需要先-1再+1，(columnNumber - 1) % 26+1，这样就能出现代表26的Z了   
+
+
+class Solution {
+    public String convertToTitle(int columnNumber) {
+        StringBuilder s = new StringBuilder();
+        while(columnNumber > 0){
+            int tmp = (columnNumber - 1) % 26+1;
+            s.append((char)('A'+tmp-1));
+            columnNumber = (columnNumber-tmp)/26;
+        }
+        s.reverse();
+        return s.toString();
+    }
+}
